@@ -51,7 +51,6 @@
         <div class="menu-item" onclick="showPage('home')"><i class="fas fa-shopping-cart"></i> TRANG CHỦ MUA HÀNG</div>
         <div class="menu-item" onclick="showPage('nap')"><i class="fas fa-wallet"></i> NẠP THẺ CÀO AUTO</div>
         <div class="menu-item" onclick="showPage('history-buy')"><i class="fas fa-history"></i> LỊCH SỬ MUA KEY</div>
-        <div class="menu-item" onclick="showPage('history-nap')"><i class="fas fa-receipt"></i> LỊCH SỬ NẠP TIỀN</div>
         <div class="menu-item" style="color:var(--red); margin-top: 20px;" onclick="logout()"><i class="fas fa-sign-out-alt"></i> ĐĂNG XUẤT</div>
     </div>
 
@@ -68,8 +67,7 @@
             <h2 style="color:var(--primary)">ĐĂNG KÝ MỚI</h2>
             <input type="text" id="u-reg" class="input-pro" placeholder="Nhập tên tài khoản">
             <input type="password" id="p-reg" class="input-pro" placeholder="Nhập mật khẩu">
-            <input type="email" id="e-reg" class="input-pro" placeholder="Nhập địa chỉ Email">
-            
+            <input type="email" id="e-reg" class="input-pro" placeholder="Nhập Email">
             <button class="btn-main" style="background:var(--primary); color:white" onclick="handleAuth('register')">TẠO TÀI KHOẢN</button>
             <p onclick="toggleAuth(false)" style="margin-top:20px; font-size:13px; color:#8b949e; cursor:pointer">Đã có tài khoản? <span style="color:var(--primary)">Quay lại</span></p>
         </div>
@@ -83,47 +81,28 @@
         </div>
 
         <div id="page-home" class="page active">
-            <div class="section-title">DRIP SILENT BYPASS</div>
+            <div class="section-title">HÀNG VIP ĐANG BÁN</div>
             <div class="item-box">
                 <img src="https://img.upanh.tv/2024/01/10/drip_logo.jpg" class="item-img">
                 <div class="item-info">
                     <select id="sel-drip" class="input-pro">
-                        <option value="60000">1 Ngày - 60.000đ</option>
-                        <option value="100000">7 Ngày - 100.000đ</option>
-                        <option value="160000">30 Ngày - 160.000đ</option>
+                        <option value="60000">DRIP 1 Ngày - 60.000đ</option>
+                        <option value="160000">DRIP 30 Ngày - 160.000đ</option>
                     </select>
                     <button class="btn-main" onclick="handleBuy('DRIP', 'sel-drip')">MUA KEY NGAY</button>
-                </div>
-            </div>
-
-            <div class="section-title">ZYGAME VIP MENU</div>
-            <div class="item-box">
-                <img src="https://img.upanh.tv/2024/01/10/zygame.jpg" class="item-img">
-                <div class="item-info">
-                    <select id="sel-zy" class="input-pro">
-                        <option value="35000">1 Ngày - 35.000đ</option>
-                        <option value="55000">3 Ngày - 55.000đ</option>
-                        <option value="85000">7 Ngày - 85.000đ</option>
-                        <option value="130000">30 Ngày - 130.000đ</option>
-                    </select>
-                    <button class="btn-main" onclick="handleBuy('ZYGAME', 'sel-zy')">MUA KEY NGAY</button>
                 </div>
             </div>
         </div>
 
         <div id="page-nap" class="page">
-            <div class="section-title">Nạp Thẻ Cào Tự Động</div>
+            <div class="section-title">Nạp Thẻ Tự Động</div>
             <div class="item-box" style="padding:20px">
-                <label style="font-size:12px; color:#8b949e">Chọn nhà mạng:</label>
                 <select id="card-type" class="input-pro" onchange="calcRefund()">
-                    <option value="0.13">Viettel (Khách nhận 87%)</option>
-                    <option value="0.11">Vinaphone (Khách nhận 89%)</option>
-                    <option value="0.18">Mobifone (Khách nhận 82%)</option>
+                    <option value="0.13">Viettel (87%)</option>
+                    <option value="0.11">Vinaphone (89%)</option>
                 </select>
-                <label style="font-size:12px; color:#8b949e">Mệnh giá:</label>
                 <select id="card-val" class="input-pro" onchange="calcRefund()">
                     <option value="10000">10.000đ</option>
-                    <option value="20000">20.000đ</option>
                     <option value="50000">50.000đ</option>
                     <option value="100000">100.000đ</option>
                 </select>
@@ -136,21 +115,21 @@
             </div>
         </div>
 
-        <div id="page-history-buy" class="page"><div class="section-title">Lịch sử đơn hàng</div><p style="text-align:center; color:#8b949e;">Dữ liệu sẽ hiện tại đây...</p></div>
+        <div id="page-history-buy" class="page"><div class="section-title">Đơn hàng đã mua</div><p style="text-align:center; color:#8b949e;">Lịch sử sẽ hiện ở đây...</p></div>
     </div>
 
     <div id="modal-key" class="modal">
         <div class="modal-content">
             <h2 style="color:var(--cyan); margin:0">MUA THÀNH CÔNG!</h2>
             <div id="order-id-txt" style="font-size:12px; color:var(--cyan); margin-top:5px">Mã đơn: #SD-0000</div>
-            <div class="key-res" id="key-output" onclick="copyKey()">ĐANG LẤY KEY...</div>
-            <p style="font-size:11px; color:var(--red);">* Chạm vào ô trên để copy key</p>
-            <button class="btn-main" onclick="location.reload()">ĐÓNG & QUAY LẠI</button>
+            <div class="key-res" id="key-output" onclick="copyKey()">KEY ĐANG TẢI...</div>
+            <button class="btn-main" onclick="location.reload()">ĐÓNG</button>
         </div>
     </div>
 
     <script>
-        const API = "https://script.google.com/macros/s/AKfycbyiyUhfv4K1VXmk7nkXP_BD5XuU19uIG329hqHmW6ci5GcbkKcOgGT2D3BOmEXoJZw7Ig/exec";
+        // LINK API MỚI NHẤT CỦA VINH
+        const API = "https://script.google.com/macros/s/AKfycbyOS7A_MH6C2fqqtf9wc9RbBnRwZMi4_0UDLH6y-NXSH5XbScMoXekkCyslIYBTaqN3OQ/exec";
         let current_user = "";
 
         window.onload = function() {
@@ -164,42 +143,30 @@
             document.getElementById('box-reg').style.display = isReg ? 'block' : 'none';
         }
 
-        // HÀM XỬ LÝ ĐĂNG NHẬP / ĐĂNG KÝ (DÙNG POST ĐỂ KHỚP APPS SCRIPT)
         async function handleAuth(type) {
             const u = type === 'login' ? document.getElementById('u-login').value : document.getElementById('u-reg').value;
             const p = type === 'login' ? document.getElementById('p-login').value : document.getElementById('p-reg').value;
             const e = type === 'register' ? document.getElementById('e-reg').value : "";
 
-            if(!u || !p || (type === 'register' && !e)) return alert("Vui lòng nhập đầy đủ thông tin!");
+            if(!u || !p || (type === 'register' && !e)) return alert("Vui lòng nhập đủ thông tin!");
 
             const btn = event.target; btn.innerText = "ĐANG XỬ LÝ...";
             
-            // Dữ liệu đóng gói JSON để gửi doPost
-            const payload = {
-                action: type,
-                user: u,
-                pass: p,
-                email: e
-            };
-
             try {
                 let res = await fetch(API, {
                     method: 'POST',
-                    body: JSON.stringify(payload)
+                    body: JSON.stringify({ action: type, user: u, pass: p, email: e })
                 });
                 let txt = await res.text();
                 
                 if(txt === "OK") { 
                     if(type === 'login') loginOk(u); 
-                    else alert("Đăng ký thành công! Hãy đăng nhập."); 
+                    else alert("Đăng ký thành công!"); 
                 } else {
-                    const msg = txt === "DA_TON_TAI" ? "Tài khoản này đã có người dùng!" : 
-                              txt === "NO_ACCOUNT" ? "Tài khoản không tồn tại!" :
-                              txt === "WRONG_PASS" ? "Sai mật khẩu rồi Vinh ơi!" : txt;
-                    alert("Thông báo: " + msg);
+                    alert("Thông báo: " + txt);
                 }
             } catch(err) { 
-                alert("Lỗi kết nối API! Vinh kiểm tra lại Deploy Anyone nhé."); 
+                alert("Lỗi kết nối API! Hãy chắc chắn Vinh đã Deploy quyền Anyone."); 
             }
             btn.innerText = "XÁC NHẬN";
         }
@@ -209,40 +176,20 @@
             document.getElementById('display-user').innerText = u;
             document.getElementById('auth-screen').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
-            updateBalance();
         }
 
-        // LẤY SỐ DƯ TỪ SHEETS (Dùng POST)
-        async function updateBalance() {
-            try {
-                let res = await fetch(API, {
-                    method: 'POST',
-                    body: JSON.stringify({ action: "get_balance", user: current_user })
-                });
-                let bal = await res.text();
-                document.getElementById('web-balance').innerText = Number(bal).toLocaleString() + "đ";
-            } catch(e) {}
-        }
-
-        async function handleBuy(name, selId, fixed = 0) {
-            const price = selId ? document.getElementById(selId).value : fixed;
+        async function handleBuy(name, selId) {
+            const price = document.getElementById(selId).value;
             const orderId = "SD-" + Math.floor(1000 + Math.random() * 9000);
             
             try {
                 let res = await fetch(API, {
                     method: 'POST',
-                    body: JSON.stringify({
-                        action: "buy",
-                        user: current_user,
-                        item: name,
-                        price: price,
-                        maDon: orderId
-                    })
+                    body: JSON.stringify({ action: "buy", user: current_user, item: name, price: price, maDon: orderId })
                 });
                 let txt = await res.text();
 
-                if(txt === "KHONG_DU_TIEN") alert("Vinh ơi khách hết tiền rồi!");
-                else if(txt === "HET") alert("Kho hàng đã hết Key!");
+                if(txt === "KHONG_DU_TIEN") alert("Số dư không đủ!");
                 else {
                     document.getElementById('order-id-txt').innerText = "Mã đơn: #" + orderId;
                     document.getElementById('key-output').innerText = txt;
@@ -258,35 +205,19 @@
 
         async function sendNap() {
             const s = document.getElementById('seri').value, p = document.getElementById('pin').value;
-            const type = document.getElementById('card-type').options[document.getElementById('card-type').selectedIndex].text;
             const amount = document.getElementById('card-val').value;
-            const real = (amount - (amount * document.getElementById('card-type').value));
-
             if(!s || !p) return alert("Nhập đủ Seri/PIN!");
             
             try {
                 await fetch(API, {
                     method: 'POST',
-                    body: JSON.stringify({
-                        action: "deposit",
-                        user: current_user,
-                        type: type,
-                        amount: amount,
-                        real: real,
-                        seri: s,
-                        pin: p
-                    })
+                    body: JSON.stringify({ action: "deposit", user: current_user, type: "Card", amount: amount, seri: s, pin: p })
                 });
-                alert("Đã gửi thẻ! Vinh check Telegram để duyệt nhé.");
+                alert("Đã gửi thẻ! Vinh đợi duyệt trên Telegram nhé.");
             } catch(e) { alert("Lỗi gửi thẻ!"); }
         }
 
-        function copyKey() {
-            const k = document.getElementById('key-output').innerText;
-            navigator.clipboard.writeText(k);
-            alert("Đã copy key: " + k);
-        }
-
+        function copyKey() { navigator.clipboard.writeText(document.getElementById('key-output').innerText); alert("Đã copy key!"); }
         function toggleMenu() { document.getElementById('sidebar').classList.toggle('active'); document.getElementById('overlay').style.display = document.getElementById('sidebar').classList.contains('active') ? 'block' : 'none'; }
         function showPage(p) { document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active')); document.getElementById('page-' + p).classList.add('active'); toggleMenu(); }
         function logout() { localStorage.removeItem('shadow_session'); location.reload(); }
